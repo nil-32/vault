@@ -37,7 +37,7 @@ void printNumbers(Matrix num1, int *kacblok,int *kacsatir,int *columnmaxi) {
             for( p = 0; p < *columnmaxi; p++)
             {
 
-            printf("%2d", num1.t[m][n][p]);
+           	 printf("%2d", num1.t[m][n][p]);
 				if(p==*columnmaxi-1)
 				{printf("\n");}
             }
@@ -47,15 +47,10 @@ void printNumbers(Matrix num1, int *kacblok,int *kacsatir,int *columnmaxi) {
     }
 }
 
-
-
 int main(){
 
     int kacblok,kacsatir,columnmaxi;
     printf("how many columns-rows-blocks would you like ?\n c-r-b\n");
     scanf("%d %d %d",&kacblok,&kacsatir,&columnmaxi);
-    Matrix arr1;
-
-    arr1 = getNumbers(&kacblok,&kacsatir,&columnmaxi);
-    printNumbers(arr1,&kacblok,&kacsatir,&columnmaxi);
+    printNumbers( getNumbers(&kacblok,&kacsatir,&columnmaxi),&kacblok,&kacsatir,&columnmaxi);
 }
