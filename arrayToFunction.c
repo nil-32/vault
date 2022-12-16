@@ -1,30 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define X 10
-//works if its a smaller size
 
-typedef struct matrix {
-    int t[X][X][X];
-} Matrix;
-
-Matrix getNumbers( int *kacblok,int *kacsatir , int *columnmaxi) {
+void getNumbers( int *kacblok,int *kacsatir , int *columnmaxi, int arr[*kacblok][*kacsatir][*columnmaxi]) {
 
  int m, n , p ;
-Matrix arr;
+
     for( m = 0; m < *kacblok; m++)
     {
         for( n = 0; n < *kacsatir; n++)
         {
             for( p = 0; p < *columnmaxi; p++)
             {
-            if (n==p){arr.t[m][n][p]=m+1;}
-            else{arr.t[m][n][p]=m;}
+            if (n==p){arr[m][n][p]=m+1;}
+            else{arr[m][n][p]=m;}
             }
         }
     }
-    return arr;
+
 }
-void printNumbers(Matrix num1, int *kacblok,int *kacsatir,int *columnmaxi) {
+void printNumbers(int *kacblok,int *kacsatir,int *columnmaxi, int num1[*kacblok][*kacsatir][*columnmaxi]) {
 
 
     int m, n , p ;
@@ -36,7 +30,7 @@ void printNumbers(Matrix num1, int *kacblok,int *kacsatir,int *columnmaxi) {
             for( p = 0; p < *columnmaxi; p++)
             {
 
-            printf("%2d", num1.t[m][n][p]);
+            printf("%2d", num1[m][n][p]);
 				if(p==*columnmaxi-1)
 				{printf("\n");}
             }
@@ -51,5 +45,7 @@ int main(){
     int kacblok,kacsatir,columnmaxi;
     printf("how many columns-rows-blocks would you like ?\n c-r-b\n");
     scanf("%d %d %d",&kacblok,&kacsatir,&columnmaxi);
-    printNumbers(getNumbers(&kacblok,&kacsatir,&columnmaxi),&kacblok,&kacsatir,&columnmaxi);
+    int arr[kacblok][kacsatir][columnmaxi];
+    getNumbers(&kacblok,&kacsatir , &columnmaxi,arr);
+    printNumbers(&kacblok,&kacsatir,&columnmaxi,arr);
 }
