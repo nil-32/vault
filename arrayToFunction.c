@@ -49,7 +49,6 @@ void printNumbers(Matrix num1, int *kacblok,int *kacsatir,int *columnmaxi) {
 
 
 
-
 int main(){
 
     int kacblok,kacsatir,columnmaxi;
